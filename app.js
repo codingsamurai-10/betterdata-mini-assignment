@@ -20,13 +20,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+const db = mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("Connected to db"));
+
 app.use("/users", usersRouter);
 app.use("/projects", projectsRouter);
 app.use("/models", modelsRouter);
 app.use("/parameters", parametersRouter);
-
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to db"));
-
 module.exports = app;
