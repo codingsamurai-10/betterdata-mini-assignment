@@ -5,7 +5,7 @@ const methodOverride = require("method-override");
 
 require("dotenv").config();
 
-const db = require("./db");
+require("./db");
 
 const usersRouter = require("./routes/users");
 const projectsRouter = require("./routes/projects");
