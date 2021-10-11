@@ -8,3 +8,6 @@ const schema = new mongoose.Schema({
     projects: [projectSchema],
   },
 });
+
+const model = mongoose.model("User", schema);
+export default model;
