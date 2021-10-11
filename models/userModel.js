@@ -5,8 +5,8 @@ const schema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    projects: [projectSchema],
   },
+  projects: [projectSchema],
 });
 
 const model = mongoose.model("User", schema);
