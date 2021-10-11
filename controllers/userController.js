@@ -5,4 +5,5 @@ const addNewUser = (req, res) => {
   user.save();
   res.send("ok");
 };
+
 module.exports = { addNewUser };
