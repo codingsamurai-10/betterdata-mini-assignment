@@ -8,4 +8,6 @@ const addNewProject = async (req, res) => {
   res.send("ok");
 };
 
-module.exports = { addNewProject };
+const uploadRealData = async (req, res) => {};
+
+module.exports = { addNewProject, uploadRealData };
