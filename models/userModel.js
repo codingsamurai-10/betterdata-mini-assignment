@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import projectSchema from "./projectSchema";
+const mongoose = require("mongoose");
+const projectSchema = require("./projectSchema");
 
 const schema = new mongoose.Schema({
   username: {
@@ -10,4 +10,4 @@ const schema = new mongoose.Schema({
 });
 
 const model = mongoose.model("User", schema);
-export default model;
+module.exports = model;

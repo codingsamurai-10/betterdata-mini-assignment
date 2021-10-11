@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import modelSchema from "./modelSchema";
+const mongoose = require("mongoose");
+const modelSchema = require("./modelSchema");
 
 const schema = new mongoose.Schema({
   name: {
@@ -9,4 +9,4 @@ const schema = new mongoose.Schema({
   },
   models: [modelSchema],
 });
-export default schema;
+module.exports = schema;

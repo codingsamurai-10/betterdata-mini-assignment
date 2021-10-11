@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import parameterSchema from "./parameterSchema";
+const mongoose = require("mongoose");
+const parameterSchema = require("./parameterSchema");
 
 const schema = new mongoose.Schema({
   name: {
@@ -9,4 +9,4 @@ const schema = new mongoose.Schema({
   },
   parameters: parameterSchema,
 });
-export default schema;
+module.exports = schema;
