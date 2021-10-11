@@ -8,4 +8,13 @@ const addNewModel = async (req, res) => {
   res.send("ok");
 };
 
-module.exports = { addNewModel };
+const updateModelName = async (req, res) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  const model = project.models.id(req.body.modelId);
+  model.name = req.body.updatedName;
+  user.save();
+  res.send("ok");
+};
+
+module.exports = { addNewModel, updateModelName };
