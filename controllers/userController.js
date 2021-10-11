@@ -1,8 +1,8 @@
 const userModel = require("../models/userModel");
 
-const addNewUser = (req, res) => {
+const addNewUser = async (req, res) => {
   const user = new userModel({ ...req.body });
-  user.save();
+  await user.save();
   res.send("ok");
 };
 
