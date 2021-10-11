@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 const usersRouter = require("./routes/users");
 const projectsRouter = require("./routes/projects");
 const modelsRouter = require("./routes/models");
+const parametersRouter = require("./routes/parameters");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", usersRouter);
 app.use("/projects", projectsRouter);
 app.use("/models", modelsRouter);
+app.use("/parameters", parametersRouter);
 
 mongoose
   .connect(process.env.MONGODB_URI)
