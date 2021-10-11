@@ -17,4 +17,12 @@ const updateModelName = async (req, res) => {
   res.send("ok");
 };
 
-module.exports = { addNewModel, updateModelName };
+const deleteModel = async (req, res) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  project.models.pull(req.body.modelId);
+  user.save();
+  res.send("ok");
+};
+
+module.exports = { addNewModel, updateModelName, deleteModel };
