@@ -25,4 +25,15 @@ const deleteModel = async (req, res) => {
   res.send("ok");
 };
 
-module.exports = { addNewModel, updateModelName, deleteModel };
+const getModelsOfProject = async (req, res) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  res.send(project.models);
+};
+
+module.exports = {
+  addNewModel,
+  updateModelName,
+  deleteModel,
+  getModelsOfProject,
+};

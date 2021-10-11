@@ -5,5 +5,6 @@ const models = require("../controllers/model");
 router.post("/", models.addNewModel);
 router.put("/", models.updateModelName);
 router.delete("/", models.deleteModel);
+router.get("/", models.getModelsOfProject);
 
 module.exports = router;
