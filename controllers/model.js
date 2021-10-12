@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel");
 const fs = require("fs");
 
-const addNewModel = async (req, res) => {
+const addNewModel = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   project.models.push(req.body.model);
@@ -9,7 +9,7 @@ const addNewModel = async (req, res) => {
   res.send("ok");
 };
 
-const updateModelName = async (req, res) => {
+const updateModelName = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   const model = project.models.id(req.body.modelId);
@@ -18,7 +18,7 @@ const updateModelName = async (req, res) => {
   res.send("ok");
 };
 
-const deleteModel = async (req, res) => {
+const deleteModel = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   project.models.pull(req.body.modelId);
@@ -26,13 +26,13 @@ const deleteModel = async (req, res) => {
   res.send("ok");
 };
 
-const getModelsOfProject = async (req, res) => {
+const getModelsOfProject = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   res.send(project.models);
 };
 
-const uploadSyntheticDataset = async (req, res) => {
+const uploadSyntheticDataset = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   const model = project.models.id(req.body.modelId);
@@ -41,7 +41,7 @@ const uploadSyntheticDataset = async (req, res) => {
   res.send("ok");
 };
 
-const deleteSyntheticDataset = async (req, res) => {
+const deleteSyntheticDataset = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   const model = project.models.id(req.body.modelId);
@@ -52,7 +52,7 @@ const deleteSyntheticDataset = async (req, res) => {
   res.send("ok");
 };
 
-const getSyntheticDatasetMetadata = async (req, res) => {
+const getSyntheticDatasetMetadata = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   const model = project.models.id(req.body.modelId);
