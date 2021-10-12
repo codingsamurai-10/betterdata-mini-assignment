@@ -8,7 +8,7 @@ const addNewProject = async (req, res) => {
   res.send("ok");
 };
 
-const uploadRealData = async (req, res) => {
+const uploadRealDataset = async (req, res) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   project.realData.push(req.file);
@@ -16,4 +16,4 @@ const uploadRealData = async (req, res) => {
   res.send("ok");
 };
 
-module.exports = { addNewProject, uploadRealData };
+module.exports = { addNewProject, uploadRealDataset };
