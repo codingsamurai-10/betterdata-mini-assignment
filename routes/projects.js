@@ -5,6 +5,6 @@ const { upload } = require("../db");
 
 router.post("/", projects.addNewProject);
 router.post("/upload", upload.single("upload"), projects.uploadRealDataset);
-router.delete("/file/:id", projects.deleteRealDataset);
+router.delete("/file", projects.deleteRealDataset);
 
 module.exports = router;
