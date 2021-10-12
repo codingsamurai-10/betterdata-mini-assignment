@@ -13,5 +13,6 @@ router.post(
   models.uploadSyntheticDataset
 );
 router.delete("/file", models.deleteSyntheticDataset);
+router.get("/files", models.getSyntheticDatasetMetadata);
 
 module.exports = router;

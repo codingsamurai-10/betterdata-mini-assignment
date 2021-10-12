@@ -52,6 +52,13 @@ const deleteSyntheticDataset = async (req, res) => {
   res.send("ok");
 };
 
+const getSyntheticDatasetMetadata = async (req, res) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  const model = project.models.id(req.body.modelId);
+  res.send(model.syntheticData);
+};
+
 module.exports = {
   addNewModel,
   updateModelName,
@@ -59,4 +66,5 @@ module.exports = {
   getModelsOfProject,
   uploadSyntheticDataset,
   deleteSyntheticDataset,
+  getSyntheticDatasetMetadata,
 };
