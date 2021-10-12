@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  fileName: {
+  filename: {
     type: String,
     required: true,
   },
-  originalName: {
+  originalname: {
     type: String,
     required: true,
   },
