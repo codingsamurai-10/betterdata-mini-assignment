@@ -14,7 +14,24 @@ const storage = multer.diskStorage({
     });
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  fileFilter: (_req, file, cb) => {
+    checkFileType(file, cb);
+  },
+});
+
+const checkFileType = (file, cb) => {
+  const filetypes = /csv/;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("Please upload a csv file.");
+  }
+};
 
 mongoose
   .connect(process.env.MONGODB_URI)
