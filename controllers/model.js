@@ -31,9 +31,19 @@ const getModelsOfProject = async (req, res) => {
   res.send(project.models);
 };
 
+const uploadSyntheticDataset = async (req, res) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  const model = project.models.id(req.body.modelId);
+  model.syntheticData.push(req.file);
+  await user.save();
+  res.send("ok");
+};
+
 module.exports = {
   addNewModel,
   updateModelName,
   deleteModel,
   getModelsOfProject,
+  uploadSyntheticDataset,
 };
