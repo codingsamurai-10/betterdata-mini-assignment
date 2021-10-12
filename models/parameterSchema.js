@@ -15,6 +15,6 @@ const schema = new mongoose.Schema(
       },
     },
   },
-  { _id: false }
+  { _id: false, strict: false }
 );
 module.exports = schema;
