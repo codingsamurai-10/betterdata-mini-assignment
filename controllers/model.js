@@ -59,6 +59,14 @@ const getSyntheticDatasetMetadata = async (req, res, next) => {
   res.send(model.syntheticData);
 };
 
+const downloadSyntheticData = async (req, res, next) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  const model = project.models.id(req.body.modelId);
+  const fileData = model.syntheticData.id(req.body.fileId);
+  res.download(fileData.path);
+};
+
 module.exports = {
   addNewModel,
   updateModelName,
@@ -67,4 +75,5 @@ module.exports = {
   uploadSyntheticDataset,
   deleteSyntheticDataset,
   getSyntheticDatasetMetadata,
+  downloadSyntheticData,
 };
