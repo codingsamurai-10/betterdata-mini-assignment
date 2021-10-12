@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const modelSchema = require("./modelSchema");
-const imageSchema = require * "./imageSchema";
+const fileSchema = require("./fileSchema");
 
 const schema = new mongoose.Schema({
   name: {
@@ -9,6 +9,6 @@ const schema = new mongoose.Schema({
     // TODO: validator to keep project names unique
   },
   models: [modelSchema],
-  realData: [imageSchema],
+  realData: [fileSchema],
 });
 module.exports = schema;

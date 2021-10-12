@@ -11,7 +11,7 @@ const addNewProject = async (req, res) => {
 const uploadRealData = async (req, res) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
-  project.realData.push({ filename: req.file.filename, fileId: req.file.id });
+  project.realData.push(req.file);
   await user.save();
   res.send("ok");
 };
