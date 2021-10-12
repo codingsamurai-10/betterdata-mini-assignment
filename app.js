@@ -22,4 +22,9 @@ app.use("/users", usersRouter);
 app.use("/projects", projectsRouter);
 app.use("/models", modelsRouter);
 app.use("/parameters", parametersRouter);
+
+app.use((req, res, next) => {
+  res.status(400).json({ messsage: "Not found" });
+});
+
 module.exports = app;
