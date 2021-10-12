@@ -11,6 +11,6 @@ router.post(
 );
 router.delete("/file", projects.deleteRealDataset);
 router.put("/file", projects.updateRealDatasetName);
-router.get("/files", projects.getRealDatasetNames);
+router.get("/files", projects.getRealDatasetMetadata);
 
 module.exports = router;
