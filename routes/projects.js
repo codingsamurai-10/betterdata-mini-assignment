@@ -4,7 +4,11 @@ const projects = require("../controllers/project");
 const { upload } = require("../db");
 
 router.post("/", projects.addNewProject);
-router.post("/upload", upload.single("upload"), projects.uploadRealDataset);
+router.post(
+  "/file/upload",
+  upload.single("upload"),
+  projects.uploadRealDataset
+);
 router.delete("/file", projects.deleteRealDataset);
 router.put("/file", projects.updateRealDatasetName);
 router.get("/files", projects.getRealDatasetNames);
