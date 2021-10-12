@@ -1,4 +1,5 @@
 const userModel = require("../models/userModel");
+const fs = require("fs");
 
 const addNewProject = async (req, res) => {
   const userId = req.body.userId;
@@ -19,6 +20,8 @@ const uploadRealDataset = async (req, res) => {
 const deleteRealDataset = async (req, res) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
+  const fileData = project.realData.id(req.body.fileId);
+  fs.unlinkSync(fileData.path);
   project.realData.pull(req.body.fileId);
   await user.save();
   res.send("ok");
