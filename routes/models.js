@@ -12,5 +12,6 @@ router.post(
   upload.single("upload"),
   models.uploadSyntheticDataset
 );
+router.delete("/file", models.deleteSyntheticDataset);
 
 module.exports = router;
