@@ -27,4 +27,18 @@ const deleteRealDataset = async (req, res) => {
   res.send("ok");
 };
 
-module.exports = { addNewProject, uploadRealDataset, deleteRealDataset };
+const updateRealDatasetName = async (req, res) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  const fileData = project.realData.id(req.body.fileId);
+  fileData.originalname = req.body.updatedName;
+  await user.save();
+  res.send("ok");
+};
+
+module.exports = {
+  addNewProject,
+  uploadRealDataset,
+  deleteRealDataset,
+  updateRealDatasetName,
+};
