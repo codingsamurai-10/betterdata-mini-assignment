@@ -81,7 +81,7 @@ const downloadSyntheticData = async (req, res, next) => {
   const project = user.projects.id(req.body.projectId);
   const model = project.models.id(req.body.modelId);
   const fileData = model.syntheticData.id(req.body.fileId);
-  res.download(fileData.path);
+  res.download(fileData.path, fileData.originalname);
 };
 
 module.exports = {
