@@ -12,7 +12,7 @@ const addNewProject = async (req, res, next) => {
   const userId = req.body.userId;
   const user = await userModel.findById(userId);
   if (assertProjectNameAlreadyExists(req.body.project.name, user.projects)) {
-    const error = new Error("Model name already exists");
+    const error = new Error("Project name already exists");
     error.status = 400;
     return next(error);
   }
