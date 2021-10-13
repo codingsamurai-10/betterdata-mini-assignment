@@ -1,9 +1,21 @@
 const userModel = require("../models/userModel");
 const fs = require("fs");
 
+const assertModelNameAlreadyExists = (name, models) => {
+  if (models.some((model) => model.name === name)) {
+    return true;
+  }
+  return false;
+};
+
 const addNewModel = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
+  if (assertModelNameAlreadyExists(req.body.model.name, project.models)) {
+    const error = new Error("Model name already exists");
+    error.status = 400;
+    return next(error);
+  }
   project.models.push(req.body.model);
   user.save();
   res.send("ok");
