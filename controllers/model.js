@@ -84,6 +84,19 @@ const downloadSyntheticData = async (req, res, next) => {
   res.download(fileData.path, fileData.originalname);
 };
 
+const streamSyntheticData = async (req, res, next) => {
+  const user = await userModel.findById(req.body.userId);
+  const project = user.projects.id(req.body.projectId);
+  const model = project.models.id(req.body.modelId);
+  const fileData = model.syntheticData.id(req.body.fileId);
+  res.writeHead(200, {
+    "Content-Type": "text/csv",
+    "Content-Length": fileData.size,
+  });
+  const readStream = fs.createReadStream(fileData.path);
+  readStream.pipe(res);
+};
+
 module.exports = {
   addNewModel,
   updateModelName,
@@ -93,4 +106,5 @@ module.exports = {
   deleteSyntheticDataset,
   getSyntheticDatasetMetadata,
   downloadSyntheticData,
+  streamSyntheticData,
 };

@@ -15,5 +15,6 @@ router.post(
 router.delete("/file", models.deleteSyntheticDataset);
 router.get("/files", models.getSyntheticDatasetMetadata);
 router.get("/file/download", models.downloadSyntheticData);
+router.get("/file/stream", models.streamSyntheticData);
 
 module.exports = router;
