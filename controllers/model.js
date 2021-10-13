@@ -25,6 +25,11 @@ const updateModelName = async (req, res, next) => {
   const user = await userModel.findById(req.body.userId);
   const project = user.projects.id(req.body.projectId);
   const model = project.models.id(req.body.modelId);
+  if (assertModelNameAlreadyExists(req.body.updatedName, project.models)) {
+    const error = new Error("Model name already exists");
+    error.status = 400;
+    return next(error);
+  }
   model.name = req.body.updatedName;
   user.save();
   res.send("ok");
